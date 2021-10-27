@@ -1,3 +1,7 @@
+/* Example output:
+Timer started at [ 00:43:36 PM ] -> 00:44:45
+*/
+
 #ifndef _WIN32
 #include <unistd.h>
 #else

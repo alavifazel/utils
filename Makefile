@@ -1,10 +1,16 @@
 CC = gcc
+
 CFLAGS  = -g -Wall
 
-TARGET = timer
-all:
-	mkdir -p build
-	$(CC) $(CFLAGS) -o build/$(TARGET).out $(TARGET)/$(TARGET).c -lm
+TARGET = utils
+OUTPUT = x
+
+all: $(TARGET) 
+
+$(TARGET): $(TARGET).c
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(TARGET).c validate.c timer.c code_gen.c -lm
+
 clean:
-	rm -r build/
+	$(RM) $(TARGET)
+
 

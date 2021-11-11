@@ -19,9 +19,20 @@
 #include "validate.h"
 #include "code_gen.h"
 
+const char*
+usage = "General commands:  \n"
+	" timer 	Starts a loop and prints out the time.\n"
+	"\nCode generation commands: \n"
+	"(Supported languages: Java, C)\n"
+	"<lang> gs	Generates getter/setters of the given field (for OOP languages).\n"
+	"<lang> bp	Outputs a starting code boilerplate for the specified language.\n"
+	"\nExample usage:\n"
+	"x java gs private int myField\\;\n"
+	"x timer\n";
+
 int main(int argv, const char *argc[]){
   if(!validateInput(argv, argc)) {
-    fprintf(stderr, "ERR!");
+    printf("%s", usage);
     exit(1);
   }
 
@@ -36,6 +47,7 @@ int main(int argv, const char *argc[]){
 
   if(strcmp(argc[1], "timer") == 0)
 	  loopTimePrint();
+
   if(strcmp(argc[1], "java") == 0)
     if(strcmp(argc[2], "gs") == 0) 
       printf("%s", generateJavaGetterSetter(str));

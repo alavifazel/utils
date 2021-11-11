@@ -63,7 +63,7 @@ const char* generateCBoilerplate() {
 		  "#include <stdio.h>\n"
 		  "\n"
 		  "int main(int argv, char** argc) {\n"
-		  "    return 0\n"
+		  "    return 0;\n"
 		  "}\n");
   return code;
 }

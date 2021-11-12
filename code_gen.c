@@ -51,6 +51,12 @@ const char* generateJavaGetterSetter(char const* str) {
 	   "}\n",
 	   type, uppercaseName, name);
 
+  strcat(buffer, "private ");
+  strcat(buffer, type);
+  strcat(buffer, " ");
+  strcat(buffer, name);
+  strcat(buffer, ";\n");
+
   strcat(buffer, getter);
   strcat(buffer, setter);
 

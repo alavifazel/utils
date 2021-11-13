@@ -6,7 +6,7 @@ const char* generateJavaGetterSetter(char const* str) {
   char name[128];
   size_t maxGroup = 4;
   regex_t regex;
-  const char* regexString = ".*([[:space:]].*[^[:space:]])[[:space:]]*([[:space:]].*);$";
+  const char* regexString = "(:?private)*([[:space:]]*.*[^[:space:]])[[:space:]]*([[:space:]].*);$";
   regmatch_t regexGroups[maxGroup];
   if(regcomp(&regex, regexString, REG_EXTENDED)) {
     fprintf(stderr, "ERR!");

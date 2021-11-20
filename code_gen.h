@@ -9,5 +9,6 @@
 
 const char* generateJavaGetterSetter(char const*);
 const char* generateCBoilerplate();
+const char* generateHTMLBoilerplate();
 
 #endif

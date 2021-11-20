@@ -18,7 +18,7 @@ struct Command *getCommands() {
 }
 
 const char **getLanguagesList() {
-  static const char* list[] = {"java", "c"};
+  static const char* list[] = {"java", "c", "html"};
   return list;
 }
 

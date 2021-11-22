@@ -56,20 +56,23 @@ int main(int argv, const char *argc[]){
   }
 
   if(strcmp(argc[1], "c") == 0) {
-   if(strcmp(argc[2], "bp") == 0 && argv <= 2) {
-     printf("%s", generateCBoilerplate());
-   }  else if(strcmp(argc[2], "bp") == 0 && strcmp(argc[3], "-b") == 0) {
-      printf("15");
+   if(strcmp(argc[2], "bp") == 0) {
+     if(argv <= 3) {
+         printf("%s", generateCBoilerplate());
+     } else if(strcmp(argc[3], "-") == 0) {
+        printf("15");
+     }
    }
   }
 
   if(strcmp(argc[1], "html") == 0) { // Mimics Emmet commands
-   if(strcmp(argc[2], "bp") == 0 && argv <= 2) {
-      printf("%s", generateHTMLBoilerplate());
-   } else if(strcmp(argc[2], "bp") == 0 && strcmp(argc[3], "-b") == 0) {
-      printf("15");
-   }
-
+   if(strcmp(argc[2], "bp") == 0) {
+     if(argv <= 3) {
+       printf("%s", generateHTMLBoilerplate());
+     } else if(strcmp(argc[3], "-") == 0) {
+       printf("15");
+     }
+   } 
   }
 
   free(str);

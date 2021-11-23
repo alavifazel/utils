@@ -13,4 +13,7 @@ $(TARGET): $(TARGET).c
 clean:
 	$(RM) $(TARGET)
 
+install:
+	sudo mv x /usr/bin/local
+
 

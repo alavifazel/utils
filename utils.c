@@ -30,6 +30,8 @@ usage = "General commands:  \n"
 	"x java gs private int myField\\;\n"
 	"x timer\n";
 
+bool stringNotContain(const char *, const char *);
+
 int main(int argv, const char *argc[]){
   if(!validateInput(argv, argc)) {
     printf("%s", usage);
@@ -71,9 +73,25 @@ int main(int argv, const char *argc[]){
        printf("%s", generateHTMLBoilerplate());
      } else if(strcmp(argc[3], "-") == 0) {
        printf("15");
-     }
-   } 
+     } else {
+	if(stringNotContain(argc[3], ".")) {
+           printf("15");
+        } else {
+
+           printf("5");
+        }
+      } 
+    }
   }
 
   free(str);
+}
+
+bool stringNotContain(const char *str, const char *chars) {
+  for(size_t i = 0; i < strlen(str); ++i) {
+    for(size_t j = 0; j < strlen(chars); j++) {
+      if(str[i] == chars[j]) return false;
+    }
+  }
+  return true;
 }

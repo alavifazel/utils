@@ -1,5 +1,7 @@
 #include "validate.h"
 
+#define NUM_OF_COMMANDS 4
+
 struct Command *getCommands() {
   static struct Command cmds[NUM_OF_COMMANDS];
   cmds[0].str = "gs";
@@ -13,6 +15,9 @@ struct Command *getCommands() {
 
   cmds[2].str = "timer";
   cmds[2].cmd = TIMER;
+
+  cmds[3].str = "makefile";
+  cmds[3].cmd = MAKEFILE;
 
   return cmds;
 }
@@ -46,7 +51,8 @@ bool twoWordCommand(const char **input) {
   struct Command *cmds = getCommands();
   for(size_t i = 0; i < NUM_OF_COMMANDS; ++i) {
 	  if(cmds[i].cmd == GETTER_SETTER_GEN || 
-	     cmds[i].cmd == BOILERPLATE_GEN)
+	     cmds[i].cmd == BOILERPLATE_GEN ||
+		 cmds[i].cmd == MAKEFILE )
 		  if(strcmp(cmds[i].str, input[2]) == 0)
 			  validationParameters[1] = true;
   }

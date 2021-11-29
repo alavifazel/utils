@@ -1,4 +1,5 @@
 #include "code_gen.h"
+#include "macros.h"
 
 const char* generateJavaGetterSetter(char const* str) {
   static char buffer[1024]= "";
@@ -15,12 +16,9 @@ const char* generateJavaGetterSetter(char const* str) {
 
   const char* cursor = str;
   if(!regexec(&regex, cursor, maxGroup, regexGroups, 0)) {
-    size_t offset = 0;
 
     for(size_t g = 1; g < maxGroup; ++g) {
       if(regexGroups[g].rm_so == -1) break;
-      if(g == 0) 
-	offset = regexGroups[g].rm_eo;
 
       char cursorCopy[strlen(cursor) + 1];
       strcpy(cursorCopy, cursor);
@@ -64,30 +62,9 @@ const char* generateJavaGetterSetter(char const* str) {
 }
 
 const char* generateCBoilerplate() {
-  static char code[128];
-  snprintf(code, sizeof(code),
-		  "#include <stdio.h>\n"
-		  "\n"
-		  "int main(int argv, char** argc) {\n"
-		  "    return 0;\n"
-		  "}\n");
-  return code;
+  return C_BOILERPLATE;
 }
 
 const char* generateHTMLBoilerplate() {
-  static char code[512];
-  snprintf(code, sizeof(code),
-	  "<!DOCTYPE html>\"\n"
-	  "<html lang=\"en\">\n"
-	  "<head>\n"
-	  "\t<meta charset=\"UTF-8\">\n"
-	  "\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
-	  "\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-	  "\t<title>Document</title>\n"
-	  "</head>\n"
-	  "<body>\n"
-	  "\n"
-	  "</body>\n"
-	  "</html>\n");
-  return code;
+  return HTML_BOILERPLATE;
 }

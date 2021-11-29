@@ -6,13 +6,14 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#define NUM_OF_COMMANDS 3
 
-enum CommandEnum { TIMER,
-	           GETTER_SETTER_GEN, 
-		   BOILERPLATE_GEN};
+enum CommandEnum {
+		TIMER,
+	    GETTER_SETTER_GEN,
+		BOILERPLATE_GEN,
+		MAKEFILE};
 
-enum lang { JAVA, CPP };
+enum lang { JAVA, C };
 
 struct Command {
 	char* str;

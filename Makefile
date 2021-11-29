@@ -8,7 +8,7 @@ OUTPUT = x
 all: $(TARGET) 
 
 $(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(OUTPUT) $(TARGET).c validate.c timer.c code_gen.c -lm
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(TARGET).c validate.c timer.c code_gen.c makefile.c -lm
 
 clean:
 	$(RM) $(TARGET)

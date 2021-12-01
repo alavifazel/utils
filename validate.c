@@ -1,6 +1,6 @@
 #include "validate.h"
 
-#define NUM_OF_COMMANDS 4
+#define NUM_OF_COMMANDS 5
 
 struct Command *getCommands() {
   static struct Command cmds[NUM_OF_COMMANDS];
@@ -19,6 +19,9 @@ struct Command *getCommands() {
   cmds[3].str = "makefile";
   cmds[3].cmd = MAKEFILE;
 
+  cmds[4].str = "bouncing";
+  cmds[4].cmd = BOUNCING_TEXT;
+
   return cmds;
 }
 
@@ -28,9 +31,10 @@ const char **getLanguagesList() {
 }
 
 bool oneWordCommand(const char **input) {
+
   struct Command *cmds = getCommands();
   for(size_t i = 0; i < NUM_OF_COMMANDS; ++i) {
-	  if(cmds[i].cmd == TIMER)
+	  if(cmds[i].cmd == TIMER || cmds[i].cmd == BOUNCING_TEXT)
 		if(strcmp(cmds[i].str, input[1]) == 0) return true;
   }
   return false;
@@ -52,9 +56,10 @@ bool twoWordCommand(const char **input) {
   for(size_t i = 0; i < NUM_OF_COMMANDS; ++i) {
 	  if(cmds[i].cmd == GETTER_SETTER_GEN || 
 	     cmds[i].cmd == BOILERPLATE_GEN ||
-		 cmds[i].cmd == MAKEFILE )
-		  if(strcmp(cmds[i].str, input[2]) == 0)
-			  validationParameters[1] = true;
+		 cmds[i].cmd == MAKEFILE)
+		 if(strcmp(cmds[i].str, input[2]) == 0)
+			 validationParameters[1] = true;
+
   }
 
   bool result = true;
@@ -67,7 +72,8 @@ bool twoWordCommand(const char **input) {
 
 bool validateInput(int argv, const char *argc[]) {
   if(argv < 2) return false;
-  if(oneWordCommand(argc)) return true; 
+  if(oneWordCommand(argc)) return true;
+  printf("\n\n%d", 2);
   if(twoWordCommand(argc)) return true;
   return false;
 }

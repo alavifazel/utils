@@ -20,6 +20,7 @@
 #include "code_gen.h"
 #include "macros.h"
 #include "makefile.h"
+#include "bouncing_text.h"
 
 bool stringNotContain(const char *, const char *);
 
@@ -40,6 +41,15 @@ int main(int argv, const char *argc[]){
   
   if(strcmp(argc[1], "timer") == 0) {
     loopTimePrint();
+  }
+
+  if(strcmp(argc[1], "bouncing") == 0) {
+	  char text[256];
+	  for(int i = 2; i < argv; ++i) {
+		  strcat(text, argc[i]);
+		  strcat(text, " ");
+	  }
+	  bouncingText(text);
   }
 
   if(strcmp(argc[1], "java") == 0) {

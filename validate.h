@@ -6,12 +6,13 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-
 enum CommandEnum {
 		TIMER,
 	    GETTER_SETTER_GEN,
 		BOILERPLATE_GEN,
-		MAKEFILE};
+		MAKEFILE,
+		BOUNCING_TEXT
+};
 
 enum lang { JAVA, C };
 

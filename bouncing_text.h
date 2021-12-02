@@ -5,10 +5,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define HEIGHT 20
-#define WIDTH 70
-#define FPS 40
-
 typedef struct {
 	float x, y;
 } Point;

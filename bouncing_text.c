@@ -1,5 +1,9 @@
 #include "bouncing_text.h"
 
+#define HEIGHT 20
+#define WIDTH 8
+#define FPS 30
+
 void clear(void) {
 	printf("\e[1;1H\e[2J");
 }
@@ -21,29 +25,27 @@ void bouncingText(char* text) {
 	int t = 0;
 	p.x = 5;
 	p.y = 4;
-	float a = .00001;
-	float v = 0;
+	double a = .001;
+	double v = 0;
 	bool reversed = true;
 	while(1) {
-		if(p.y > HEIGHT) {
+		if(p.y >= HEIGHT) {
 			reversed = reversed? false: true;
 			p.y = HEIGHT;
 		}
-		if(v < 0) {
-			reversed = reversed? false: true;
+		if(p.y < 4) {
 			p.y = 4;
-			v = 0;
+			reversed = reversed? false: true;
+			t = 0;
 		}
 		usleep(1000000 / FPS);
 		clear();
 		show(p.x, p.y, text);
 		if(reversed) {
-			v += a * t;
-			p.y += (v*v) / (2*a);
+			p.y += (1/2.0) * a * t * t;
 			t++;
 		} else {
-			v -= a * t;
-			p.y -= (v*v) / (2*a);
+			p.y -= (1/2.0) * a * t * t;
 			t--;
 		}
 	}

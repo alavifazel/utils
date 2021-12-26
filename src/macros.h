@@ -2,8 +2,10 @@
 #define MACRO
 
 #define USAGE "\
-General commands:  \n\
-timer 	Starts a loop and prints out the time.\n\
+General commands:  \n\n\
+timer   Starts a loop and prints out the time.\n\
+hex2bin <Number>   Converts a hexadecimal number to binary.\n\
+bin2hex <Number>   Converts a binary number to hexadecimal.\n\
 \nCode generation commands: \n\
 (Supported languages: Java, C)\n\
 <lang> gs	Generates getter/setters of the given field (for OOP languages).\n\

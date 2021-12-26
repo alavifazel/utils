@@ -1,7 +1,7 @@
 #include <string.h>
 
 char* CMakefile(char *fileNames) {
-  static char content[1024];
+  static char content[512];
   const char* compiler = "CC = gcc\n";
   const char* flags = "CFLAGS = -g -Wall";
   

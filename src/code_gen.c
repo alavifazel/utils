@@ -2,12 +2,12 @@
 #include "macros.h"
 
 const char* generateJavaGetterSetter(char const* str) {
-  static char buffer[1024]= "";
+  static char buffer[1024];
   char type[128];
   char name[128];
   size_t maxGroup = 4;
   regex_t regex;
-  const char* regexString = "(:?private)*([[:space:]]*.*[^[:space:]])[[:space:]]*([[:space:]].*);$";
+  const char* regexString = ".*([[:space:]].*[^[:space:]])[[:space:]]*([[:space:]].*);$";
   regmatch_t regexGroups[maxGroup];
   if(regcomp(&regex, regexString, REG_EXTENDED)) {
     fprintf(stderr, "ERR!");
@@ -36,7 +36,7 @@ const char* generateJavaGetterSetter(char const* str) {
   strncpy(uppercaseName, name, sizeof(name));
   uppercaseName[0] = toupper(uppercaseName[0]);
   strcat(setter, name);
-  buffer[strlen(setter) - strlen(name)] = toupper(name[0]);
+  buffer[sizeof(setter) - sizeof(name)] = toupper(name[0]);
   snprintf(setter, sizeof(setter),
 	   "\npublic void set%s"
 	   "(%s %s) { \n\t this.%s = %s;\n"

@@ -8,10 +8,12 @@
 
 enum CommandEnum {
 		TIMER,
-	    GETTER_SETTER_GEN,
+		GETTER_SETTER_GEN,
 		BOILERPLATE_GEN,
 		MAKEFILE,
-		BOUNCING_TEXT
+		BOUNCING_TEXT,
+		BIN_TO_HEX,
+		HEX_TO_BIN
 };
 
 enum lang { JAVA, C };
